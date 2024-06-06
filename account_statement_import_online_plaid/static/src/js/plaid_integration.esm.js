@@ -1,6 +1,7 @@
 /** @odoo-module **/
 /* global Plaid */
 import {registry} from "@web/core/registry";
+
 export async function plaid_login(env, action) {
     const handler = Plaid.create({
         clientName: "Plaid Quickstart",
