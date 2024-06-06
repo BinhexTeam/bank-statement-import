@@ -15,7 +15,6 @@
     "assets": {
         "web.assets_backend": [
             "/account_statement_import_online_plaid/static/src/**/*.js",
-            "https://cdn.plaid.com/link/v2/stable/link-initialize.js",
         ],
     },
     "external_dependencies": {
