@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+plaid_interface_manager,plaid interface manager,model_plaid_interface,account.group_account_user,1,1,1,1
+plaid_interface_user,plaid interface user,model_plaid_interface,base.group_user,1,0,0,0

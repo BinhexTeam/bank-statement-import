@@ -1,3 +1,4 @@
 # generated from manifests external_dependencies
 chardet
+plaid-python==23.0.0
 xlrd
