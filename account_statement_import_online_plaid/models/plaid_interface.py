@@ -22,8 +22,6 @@ class PlaidInterface(models.AbstractModel):
     _description = "Plaid Interface"
 
     def _get_host(self, host):
-        if host == "development":
-            return plaid.Environment.Development
         if host == "sandbox":
             return plaid.Environment.Sandbox
         if host == "production":

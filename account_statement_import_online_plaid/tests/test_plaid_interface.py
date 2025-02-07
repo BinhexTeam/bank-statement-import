@@ -19,9 +19,6 @@ class TestPlaidInterface(common.TransactionCase):
         """Test getting Plaid host."""
         interface_model = self.env["plaid.interface"]
         self.assertEqual(
-            interface_model._get_host("development"), plaid.Environment.Development
-        )
-        self.assertEqual(
             interface_model._get_host("sandbox"), plaid.Environment.Sandbox
         )
         self.assertEqual(

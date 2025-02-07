@@ -9,7 +9,6 @@ class OnlineBankStatementProvider(models.Model):
     plaid_access_token = fields.Char()
     plaid_host = fields.Selection(
         [
-            ("development", "Development"),
             ("sandbox", "Sandbox"),
             ("production", "Production"),
         ],
@@ -93,7 +92,7 @@ class OnlineBankStatementProvider(models.Model):
                 "ref": transaction["name"],
                 "payment_ref": transaction["name"],
                 "unique_import_id": transaction["transaction_id"],
-                "amount": transaction["amount"],
+                "amount": float(transaction["amount"]) * -1.00,
                 "raw_data": transaction,
             }
             for transaction in transactions

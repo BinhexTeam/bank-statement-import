@@ -186,8 +186,8 @@ class TestAccountStatementImportOnlinePlaid(common.TransactionCase):
         self.assertEqual(len(statements), 2)
         lines = statements.line_ids
         self.assertEqual(len(lines), 2)
-        self.assertEqual(lines[0].amount, 500.0)
-        self.assertEqual(lines[1].amount, 30.0)
+        self.assertEqual(lines[0].amount, -500.0)
+        self.assertEqual(lines[1].amount, -30.0)
 
     def test_get_services(self):
         services = self.provider._get_available_services()
