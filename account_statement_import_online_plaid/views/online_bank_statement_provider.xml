@@ -15,8 +15,18 @@
                     attrs="{'invisible':[('service','!=','plaid')]}"
                 >
                     <field name="plaid_access_token" invisible="1" />
-                    <field name="username" string="Login" />
-                    <field name="password" string="Secret Key" />
+                    <field
+                        name="username"
+                        attrs="{'required': [('service', '=', 'plaid')]}"
+                        widget="password"
+                        string="Client ID"
+                    />
+                    <field
+                        name="password"
+                        attrs="{'required': [('service', '=', 'plaid')]}"
+                        widget="password"
+                        string="Secret Key"
+                    />
                     <field
                         name="plaid_host"
                         attrs="{'required': [('service', '=', 'plaid')]}"

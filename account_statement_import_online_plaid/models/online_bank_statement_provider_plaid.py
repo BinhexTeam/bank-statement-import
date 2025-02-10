@@ -3,6 +3,26 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+AVAILABLE_LANGS = [
+    "da",
+    "nl",
+    "en",
+    "et",
+    "fr",
+    "de",
+    "hi",
+    "it",
+    "lv",
+    "lt",
+    "no",
+    "pl",
+    "pt",
+    "ro",
+    "es",
+    "sv",
+    "vi",
+]
+
 
 class OnlineBankStatementProvider(models.Model):
     _inherit = "online.bank.statement.provider"
@@ -34,6 +54,11 @@ class OnlineBankStatementProvider(models.Model):
             return self.journal_id.company_id.country_id.code
         raise UserError(_("Country code not found for the bank or the company..."))
 
+    def _verify_lang(self, lang):
+        if lang not in AVAILABLE_LANGS:
+            return "en"
+        return lang
+
     def action_sync_with_plaid(self):
         self.ensure_one()
         plaid_interface = self.env["plaid.interface"]
@@ -46,7 +71,7 @@ class OnlineBankStatementProvider(models.Model):
 
         link_token = plaid_interface._link(
             client=client,
-            language=lang,
+            language=self._verify_lang(lang),
             country_code=self._country_code(),
             company_name=company_name,
             products=["transactions"],
