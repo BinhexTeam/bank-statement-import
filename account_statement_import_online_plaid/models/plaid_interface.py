@@ -64,10 +64,14 @@ class PlaidInterface(models.AbstractModel):
         return response["access_token"]
 
     def _get_transactions(self, client, access_token, start_date, end_date):
+        options = TransactionsGetRequestOptions(
+            count=500,
+        )
         request = TransactionsGetRequest(
             access_token=access_token,
             start_date=start_date.date(),
             end_date=end_date.date(),
+            options=options,
         )
         try:
             response = client.transactions_get(request)
@@ -75,7 +79,6 @@ class PlaidInterface(models.AbstractModel):
             raise ValidationError(_("Error getting transactions: %s") % e.body) from e
         transactions = response["transactions"]
         while len(transactions) < response["total_transactions"]:
-            options = TransactionsGetRequestOptions()
             options.offset = len(transactions)
             request = TransactionsGetRequest(
                 access_token=access_token,

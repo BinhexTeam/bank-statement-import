@@ -18,13 +18,13 @@
                     <field
                         name="username"
                         attrs="{'required': [('service', '=', 'plaid')]}"
-                        widget="password"
+                        password="1"
                         string="Client ID"
                     />
                     <field
                         name="password"
                         attrs="{'required': [('service', '=', 'plaid')]}"
-                        widget="password"
+                        password="1"
                         string="Secret Key"
                     />
                     <field

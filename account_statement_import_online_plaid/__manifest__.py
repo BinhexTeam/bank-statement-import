@@ -18,6 +18,6 @@
         ],
     },
     "external_dependencies": {
-        "python": ["plaid-python == 23.0.0"],
+        "python": ["plaid-python == 28.0.0"],
     },
 }
