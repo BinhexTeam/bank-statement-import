@@ -120,5 +120,5 @@ class OnlineBankStatementProvider(models.Model):
                 "amount": float(transaction["amount"]) * -1.00,
                 "raw_data": transaction,
             }
-            for transaction in transactions
+            for transaction in transactions if not transaction['pending']
         ]
